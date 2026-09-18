@@ -84,15 +84,12 @@ export async function generatePDFReport(result: ScanResult): Promise<void> {
   doc.text(formatDate(result.scannedAt),M+6,120);doc.text(formatDuration(result.scanDuration),W/2,120);
 
   // Score ring
-  const shade=getShade(result.overallScore);
-  doc.setDrawColor(...C.gray3);doc.setLineWidth(6);doc.circle(W/2,168,22,"S");
-  doc.setDrawColor(...shade);doc.setLineWidth(6);
-  const angle=360*result.overallScore/100;
-  doc.arc(W/2-22,146,W/2+22,190,90,-angle);
-  doc.setFont("Helvetica","bold");doc.setFontSize(20);doc.setTextColor(...shade);
-  doc.text(String(result.overallScore),W/2,171,{align:"center"});
-  doc.setFont("Courier","normal");doc.setFontSize(7);doc.setTextColor(...C.gray2);
-  doc.text("/100",W/2,178,{align:"center"});
+const shade=getShade(result.overallScore);
+doc.setDrawColor(...C.gray3);doc.setLineWidth(6);doc.circle(w/2,168,22,"S");
+doc.setDrawColor(...shade);doc.setLineWidth(6);
+
+doc.setFont("Helvetica","bold");doc.setFontSize(20);doc.setTextColor(...shade);
+doc.text(String(result.overallScore),W/2,171,{align:"center"});
 
   // Grade & risk
   doc.setFont("Helvetica","bold");doc.setFontSize(32);doc.setTextColor(...shade);
