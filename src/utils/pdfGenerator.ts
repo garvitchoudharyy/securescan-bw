@@ -85,7 +85,7 @@ export async function generatePDFReport(result: ScanResult): Promise<void> {
 
   // Score ring
 const shade=getShade(result.overallScore);
-doc.setDrawColor(...C.gray3);doc.setLineWidth(6);doc.circle(w/2,168,22,"S");
+doc.setDrawColor(...C.gray3);doc.setLineWidth(6);doc.circle(W/2,168,22,"S");
 doc.setDrawColor(...shade);doc.setLineWidth(6);
 
 doc.setFont("Helvetica","bold");doc.setFontSize(20);doc.setTextColor(...shade);
