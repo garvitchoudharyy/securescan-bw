@@ -77,7 +77,7 @@ function detectTech(headers:Headers,body:string):TechStack[]{
 
 function extractEmails(body:string):string[]{
   const found=body.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g)||[];
-  return[...new Set(found.filter(e=>!e.includes("example.com")&&!e.includes("w3.org")&&!e.endsWith(".png")))].slice(0,10);
+  return Array.from(new Set(found.filter(e => !e.includes("example.com") && !e.includes("w3.org") && e.endsWith(".png")))).slice(0,10);
 }
 
 function analyzeRobots(content:string){
